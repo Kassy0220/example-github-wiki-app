@@ -102,6 +102,11 @@ GEM
     dotenv (3.1.2)
     drb (2.2.1)
     erubi (1.13.0)
+    git (2.1.1)
+      activesupport (>= 5.0)
+      addressable (~> 2.8)
+      process_executer (~> 1.1)
+      rchardet (~> 1.8)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
@@ -147,6 +152,7 @@ GEM
     nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.6)
+    process_executer (1.1.0)
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
@@ -191,6 +197,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.2.1)
+    rchardet (1.8.0)
     rdoc (6.7.0)
       psych (>= 4.0.0)
     redis (5.2.0)
@@ -252,6 +259,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv
+  git
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
