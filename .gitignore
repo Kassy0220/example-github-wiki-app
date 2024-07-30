@@ -40,4 +40,4 @@
 /node_modules
 
 # Ingore cloning repository
-/example_wiki
+/wiki_repositories

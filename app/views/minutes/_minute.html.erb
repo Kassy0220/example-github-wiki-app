@@ -9,4 +9,7 @@
     <%= minute.meeting_date %>
   </p>
 
+  <div>
+    <%= link_to 'GitHub Wiki にエクスポート', minute_export_path(minute), data: { turbo_method: :post } %>
+  </div>
 </div>
