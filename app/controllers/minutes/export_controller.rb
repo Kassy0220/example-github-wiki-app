@@ -16,6 +16,6 @@ class Minutes::ExportController < ApplicationController
     git.push('origin', 'master')
     # TODO: 例外が発生した時の処理を書く
 
-    redirect_to minutes_url, notice: "GitHub Wikiに出力が完了しました"
+    redirect_to minutes_url, notice: "GitHub Wikiに議事録を反映させました"
   end
 end
