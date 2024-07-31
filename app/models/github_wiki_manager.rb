@@ -8,6 +8,12 @@ class GithubWikiManager
   def initialize
     @git = Dir.exist?(WORKING_DIRECTORY) ? Git.open(WORKING_DIRECTORY, log: Logger.new(STDOUT))
                                          : Git.clone(ENV['GITHUB_WIKI_URL'], WORKING_DIRECTORY)
+    set_github_account
+  end
+
+  def set_github_account
+    @git.config('user.name', ENV['GITHUB_USER_NAME'])
+    @git.config('user.email', ENV['GITHUB_USER_EMAIL'])
   end
 
   def export_minute(minute)
