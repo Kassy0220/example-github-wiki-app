@@ -19,8 +19,10 @@ class GithubWikiManager
   def export_minute(minute)
     # TODO: 例外が発生した時の処理を書く
     @git.pull
+    Rails.logger.info "git pullが実行されました"
     commit_minute(minute)
     @git.push('origin', 'master')
+    Rails.logger.info "git pushが実行されました"
   end
 
   def commit_minute(minute)
@@ -30,6 +32,8 @@ class GithubWikiManager
     end
 
     @git.add("#{minute.title}.md")
+    Rails.logger.info "git addが実行されました"
     @git.commit("#{minute.title}.mdを作成")
+    Rails.logger.info "git commitが実行されました"
   end
 end
