@@ -38,9 +38,9 @@ passwd #{ENV['GITHUB_ACCESS_TOKEN']}
     @git.pull
     Rails.logger.info "git pullが実行されました"
     commit_minute(minute)
-    @git.push('origin', 'master')
     credential_file_exists = File.exist?(Rails.root.join('.netrc'))
     Rails.logger.info "#{credential_file_exists ? '認証ファイルが存在します' : '認証ファイルが存在しません'}"
+    @git.push('origin', 'master')
     Rails.logger.info "git pushが実行されました"
   end
 
