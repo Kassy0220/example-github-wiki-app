@@ -24,7 +24,7 @@ class GithubWikiManager
     content = <<-CREDENTIAL
 machine github.com
 login #{ENV['GITHUB_USER_NAME']}
-passwd #{ENV['GITHUB_ACCESS_TOKEN']}
+password #{ENV['GITHUB_ACCESS_TOKEN']}
     CREDENTIAL
 
     File.open(credential_file_path, 'w+') do |file|
