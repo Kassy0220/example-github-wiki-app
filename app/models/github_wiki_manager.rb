@@ -9,11 +9,28 @@ class GithubWikiManager
     @git = Dir.exist?(WORKING_DIRECTORY) ? Git.open(WORKING_DIRECTORY, log: Logger.new(STDOUT))
                                          : Git.clone(ENV['GITHUB_WIKI_URL'], WORKING_DIRECTORY)
     set_github_account
+    create_credential_file
   end
 
   def set_github_account
     @git.config('user.name', ENV['GITHUB_USER_NAME'])
     @git.config('user.email', ENV['GITHUB_USER_EMAIL'])
+  end
+
+  def create_credential_file
+    credential_file_path = Rails.root.join('.netrc')
+    return if File.exist?(credential_file_path)
+
+    content = <<-CREDENTIAL
+machine github.com
+login #{ENV['GITHUB_USER_NAME']}
+passwd #{ENV['GITHUB_ACCESS_TOKEN']}
+    CREDENTIAL
+
+    File.open(credential_file_path, 'w+') do |file|
+      file.puts content
+    end
+    File.chmod(0600, credential_file_path)
   end
 
   def export_minute(minute)

@@ -41,3 +41,6 @@
 
 # Ingore cloning repository
 /wiki_repositories
+
+# Ignore github credential file
+/.netrc
