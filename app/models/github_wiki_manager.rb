@@ -36,12 +36,8 @@ password #{ENV['GITHUB_ACCESS_TOKEN']}
   def export_minute(minute)
     # TODO: 例外が発生した時の処理を書く
     @git.pull
-    Rails.logger.info "git pullが実行されました"
     commit_minute(minute)
-    credential_file_exists = File.exist?(Rails.root.join('.netrc'))
-    Rails.logger.info "#{credential_file_exists ? '認証ファイルが存在します' : '認証ファイルが存在しません'}"
     @git.push('origin', 'master')
-    Rails.logger.info "git pushが実行されました"
   end
 
   def commit_minute(minute)
@@ -51,8 +47,6 @@ password #{ENV['GITHUB_ACCESS_TOKEN']}
     end
 
     @git.add("#{minute.title}.md")
-    Rails.logger.info "git addが実行されました"
     @git.commit("#{minute.title}.mdを作成")
-    Rails.logger.info "git commitが実行されました"
   end
 end
